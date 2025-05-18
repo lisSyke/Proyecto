@@ -1,0 +1,51 @@
+4/05/2025
+Se hizo primero la conexión a base datos, usando MongoDB.
+
+-- Instalaciones --
+npm install mongoose - Primera instalación SOLO para realizar la conexión con Node
+npm install bcrypt - Seguridad en las contraseñas, esto va en el modelo de Usuario.
+-------------------------
+
+Se crearon como la "plantilla" que van a tener los datos para:
+-Libro
+-Usuario
+-Comentario
+
+--Routes--
+Esto es como si crearamos una API desde 0, es decir, nosotros nos vamos 
+a encargar del comportamiento de CIERTAS funciones en la API, este Routes 
+va a ser necesario despues para poder manejar una interfaz con React. 
+
+¿Cómo actúa el React?
+Supongamos que el usuario desea ver sus libros leídos. El React recibe 
+la solicitúd y por medio de las rutas se va a comunicar con el backend, y es 
+por medio del http que Node y React piden los datos a MongoDb, MongoDB envía los datos 
+a React y este los va a mostrar.
+
+Funciones en Routes
+
+GET -> Lo vamos a usar para mostrar una lista
+POST -> Crear o agregar un libros
+PUT -> Actualizar la info de un libros
+DELETE -> Borrar
+
+07/05/2025
+
+El día de hoy se terminó de crear el routes, por lo tanto estaríamos cerca a 
+realizar las pruebas. 
+
+Además también se agregaron las conexiones a servidor y todo para que muestre
+ciertos mensajes en la interfaz.
+
+Ahora voy a realizar algunas instalaciones:
+npm install express -> Hace que el servidor funcione
+
+Ahora que funciona la conexión, lo primero que aparece en pantalla es
+"Lista de libros" esto por la dirección de la ruta.
+
+Ahora agregamos una ruta de raiz en server que va a mostrar el mensaje "¡Hola!"
+
+Podemos empezar a probar con Postman, para hacerlo, hay que enviar una ruta 
+anidada 
+"http://localhost:3000/libros"
+
