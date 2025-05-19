@@ -49,3 +49,102 @@ Podemos empezar a probar con Postman, para hacerlo, hay que enviar una ruta
 anidada 
 "http://localhost:3000/libros"
 
+COSAS QUE SE HICIERON EN GIT PARA INICIAR REPOSITORIO EN GITHUB
+
+allis@computadorallis MINGW64 /c/Users/Allis/OneDrive/Escritorio/orgalib_pruebas
+$ git init
+Initialized empty Git repository in C:/Users/allis/OneDrive/Escritorio/orgalib_pruebas/.git/
+
+allis@computadorallis MINGW64 /c/Users/Allis/OneDrive/Escritorio/orgalib_pruebas (master)
+$ git remote add origin https://github.com/lisSyke/Proyecto
+
+allis@computadorallis MINGW64 /c/Users/Allis/OneDrive/Escritorio/orgalib_pruebas (master)
+$ touch .gitignore
+
+allis@computadorallis MINGW64 /c/Users/Allis/OneDrive/Escritorio/orgalib_pruebas (master)
+$ node_modules/.env
+bash: node_modules/.env: No such file or directory
+
+allis@computadorallis MINGW64 /c/Users/Allis/OneDrive/Escritorio/orgalib_pruebas (master)
+$ git add .
+warning: in the working copy of 'backend/package-lock.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/package.json', LF will be replaced by CRLF the next time Git touches it
+
+allis@computadorallis MINGW64 /c/Users/Allis/OneDrive/Escritorio/orgalib_pruebas (master)
+$ git commit -m "Primer commit: Subir backend del proyecto"
+[master (root-commit) b76e6a6] Primer commit: Subir backend del proyecto
+ 10 files changed, 1304 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 backend/Models/Comentario.js
+ create mode 100644 backend/Models/Libro.js
+ create mode 100644 backend/Models/Usuario.js
+ create mode 100644 backend/Routes/libros.js
+ create mode 100644 backend/db.js
+ create mode 100644 backend/package-lock.json
+ create mode 100644 backend/package.json
+ create mode 100644 backend/server.js
+ create mode 100644 notas_Allison.txt
+
+allis@computadorallis MINGW64 /c/Users/Allis/OneDrive/Escritorio/orgalib_pruebas (master)
+$ git branch -M main
+
+allis@computadorallis MINGW64 /c/Users/Allis/OneDrive/Escritorio/orgalib_pruebas (main)
+$ git push -u origin main
+To https://github.com/lisSyke/Proyecto
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/lisSyke/Proyecto'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+allis@computadorallis MINGW64 /c/Users/Allis/OneDrive/Escritorio/orgalib_pruebas (main)
+$ ^C
+
+allis@computadorallis MINGW64 /c/Users/Allis/OneDrive/Escritorio/orgalib_pruebas (main)
+$ git pull origin main
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (3/3), 905 bytes | 60.00 KiB/s, done.
+From https://github.com/lisSyke/Proyecto
+ * branch            main       -> FETCH_HEAD
+ * [new branch]      main       -> origin/main
+fatal: refusing to merge unrelated histories
+
+allis@computadorallis MINGW64 /c/Users/Allis/OneDrive/Escritorio/orgalib_pruebas (main)
+$ git push -u origin main
+To https://github.com/lisSyke/Proyecto
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'https://github.com/lisSyke/Proyecto'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. If you want to integrate the remote changes,
+hint: use 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+allis@computadorallis MINGW64 /c/Users/Allis/OneDrive/Escritorio/orgalib_pruebas (main)
+$ ^C
+
+allis@computadorallis MINGW64 /c/Users/Allis/OneDrive/Escritorio/orgalib_pruebas (main)
+$ git pull --rebase origin main
+From https://github.com/lisSyke/Proyecto
+ * branch            main       -> FETCH_HEAD
+Successfully rebased and updated refs/heads/main.
+
+allis@computadorallis MINGW64 /c/Users/Allis/OneDrive/Escritorio/orgalib_pruebas (main)
+$ git push -u origin main
+Enumerating objects: 16, done.
+Counting objects: 100% (16/16), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (13/13), done.
+Writing objects: 100% (15/15), 13.14 KiB | 2.63 MiB/s, done.
+Total 15 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), done.
+To https://github.com/lisSyke/Proyecto
+   25422be..da98833  main -> main
+branch 'main' set up to track 'origin/main'.
+
+allis@computadorallis MINGW64 /c/Users/Allis/OneDrive/Escritorio/orgalib_pruebas (main)
+$
