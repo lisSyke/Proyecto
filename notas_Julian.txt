@@ -1,0 +1,87 @@
+CAMBIOS REALIZADOS EN EL ARCHIVO libros.js
+
+1. CORRECCIÓN DE RUTAS EXISTENTES
+
+Algunas rutas GET que consultan libros en MongoDB estaban mal definidas. Por ejemplo:
+
+- La ruta para buscar por autor era:  
+  router.get('/autor', ...)
+  Esto no funcionaba porque req.params.autor no existía en la URL.
+
+Se cambió a:
+router.get('/autor/:autor', async (req, res) => { ... });
+
+Ahora se puede acceder correctamente a través de:  
+GET /libros/autor/J.K. Rowling
+
+
+2. CORRECCIÓN DE RUTA PUT
+
+La ruta original para actualizar libros era:
+router.put('/libros/:actualizar_datos', ...)
+
+Esto generaba una URL redundante como /libros/libros/:id. Además, el nombre del parámetro era confuso.
+
+Se cambió a:
+router.put('/:id', async (req, res) => { ... });
+
+Ahora puedes actualizar un libro directamente con:  
+PUT /libros/1234567890
+
+
+3. CORRECCIÓN DE RUTA DELETE
+
+La eliminación de un libro por su ID tenía mal llamado el parámetro:
+router.delete('/libros/:eliminar_datos', ...)
+
+Se cambió a:
+router.delete('/:id', async (req, res) => { ... });
+
+Ahora puedes eliminar un libro correctamente con:  
+DELETE /libros/1234567890
+
+
+4. RUTA NUEVA: CONEXIÓN CON OPEN LIBRARY
+
+Se agregó una nueva ruta para buscar libros desde la API pública de Open Library.
+
+Ruta agregada:
+router.get('/externo/buscar', async (req, res) => { ... });
+
+Funcionamiento:
+1. El usuario ingresa un término de búsqueda.
+2. React hace una petición a:  
+   GET /libros/externo/buscar?q=harry+potter
+3. El backend usa fetch para consultar Open Library.
+4. Se devuelven libros con:
+   - Título
+   - Autor
+   - Año de publicación
+   - Imagen de portada (si existe)
+
+Ejemplo de respuesta:
+[
+  {
+    "titulo": "Harry Potter and the Philosopher's Stone",
+    "autor": "J.K. Rowling",
+    "anio": 1997,
+    "portada": "https://covers.openlibrary.org/b/id/123456-M.jpg"
+  }
+]
+
+
+5. INSTALACIÓN NECESARIA
+
+Para usar fetch en Node.js, es necesario instalar el paquete node-fetch:
+
+npm install node-fetch
+
+Y luego agregar al inicio del archivo:
+const fetch = require('node-fetch');
+
+
+Funciones de los cambios
+- El backend puede buscar libros externos con Open Library.
+- El usuario podrá guardar libros externos en su colección personal.
+- Se corrigieron rutas mal definidas.
+- El sistema está más limpio, estructurado y listo para integrarse con React y funciones futuras.
