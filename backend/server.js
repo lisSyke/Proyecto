@@ -1,36 +1,42 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+
 const app = express();
 const PORT = 3000;
 
+// Importar rutas correctamente
+const librosRoutes = require('./Routes/libros');
+const usuariosRoutes = require('./Routes/usuarios');
+const comentariosRoutes = require('./Routes/comentarios');
+
+// Middleware
+app.use(cors());
 app.use(express.json());
 
-const librosRoutes = require('./Routes/libros');
-app.use('/libros', librosRoutes)
+// Conexión a MongoDB Atlas
+mongoose.connect('mongodb+srv://dbAllison:p65F5Ehu3xnNMIN8@cluster0.etk9sac.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log('Conectado a MongoDB Atlas'))
+.catch(err => console.error('Error al conectar MongoDB:', err));
 
-app.get('/',(req, res)=>{
-    res.send('¡Hola!'); //Luego poner algo formal, esto es solo una prueba
+// Ruta base (opcional)
+app.get('/', (req, res) => {
+  res.send('¡Bienvenido al backend de Orgalib!');
 });
 
+// Montar rutas principales en /libros
+app.use('/libros', librosRoutes);
+app.use('/usuarios', usuariosRoutes);
+app.use('/comentarios', comentariosRoutes);
+
+
+// Iniciar servidor
 app.listen(PORT, () => {
-    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
 
-app.get('/libros',(req, res) => {
-    console.log('Se recibió una solicitud GET');
-    res.send('Lista de libros:')
-})
 
-
-
-app.put('/libros/:ID', (req, res) => {
-    res.send(`Libro con ID ${req.params.ID} actualizado`);
-});
-
-app.post('/libros', (req, res) => {
-    res.send('Nuevo libro agregado')
-})
-
-app.delete('/libros/:ID', (req, res)=>{
-    res.send(`Libro con ID ${req.params.id} eliminado`);
-});
 
