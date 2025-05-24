@@ -148,3 +148,58 @@ branch 'main' set up to track 'origin/main'.
 
 allis@computadorallis MINGW64 /c/Users/Allis/OneDrive/Escritorio/orgalib_pruebas (main)
 $
+
+/////////////////////////////////////////////////////////////////////////
+
+Nuevos comandos a github
+
+git checkout -b actualizacion_final – Crea y cambia a una nueva rama llamada actualizacion_final.
+
+git add . – Agrega todos los archivos al área de preparación (staging).
+
+git commit -m "Actualización para conectar al main" – Crea un commit con el mensaje "Actualización para conectar al main".
+
+git push -u origin actualizacion_final – Sube la nueva rama actualizacion_final al remoto y la asocia.
+
+git remote -v – Muestra las URLs de los repositorios remotos configurados.
+
+git branch – Muestra las ramas locales.
+
+git branch -r – Muestra las ramas remotas.
+
+git log --oneline --graph --all – Muestra el historial de commits como un gráfico resumido.
+
+git checkout -b actualizacion_nueva origin/actualizacion_nueva – Crea y cambia a una nueva rama local basada en origin/actualizacion_nueva.
+
+git push – Sube cambios al repositorio remoto (en la rama actual).
+
+git checkout actualizacion nueva – (Error de sintaxis) Intenta cambiar a actualizacion nueva, pero falta guion bajo.
+
+git checkout actualizacion_nueva – Cambia correctamente a la rama actualizacion_nueva.
+
+git push -u origin actualizacion_nueva --force – Fuerza el push de la rama actualizacion_nueva al remoto.
+
+git checkout main – Cambia a la rama main.
+
+git merge actualizacion_nueva --allow-unrelated-histories – Fusiona actualizacion_nueva en main, incluso si no tienen historia común.
+
+git push origin main – Sube los cambios de main al repositorio remoto.
+
+git status – Muestra el estado actual del repositorio (archivos modificados, etc.).
+
+git add notas_Allison – Agrega el archivo notas_Allison al staging (si existiera sin extensión).
+
+git add notas_Allison.txt – Agrega el archivo notas_Allison.txt al staging.
+
+git add backend/Models/Comentarios.js – Agrega Comentarios.js al staging.
+
+git add backend/Models/Comentario.js – Agrega Comentario.js al staging.
+
+git add backend/Routes/libros.js – Agrega libros.js al staging.
+
+git commit -m "Conflictos resueltos" – Crea un commit con el mensaje "Conflictos resueltos".
+
+git push origin main – Sube los cambios de la rama main al repositorio remoto.
+
+//////////////////////////////////////////////////////////////////////////////////
+
